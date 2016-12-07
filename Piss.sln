@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piss", "Piss\Piss.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piss.Tests", "Piss.Tests\Piss.Tests.csproj", "{5CD79A11-9A24-40E5-8730-8AB0A7C7120A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piss.Entities", "Piss.Entities\Piss.Entities.csproj", "{97EB5161-236D-4CE1-B350-BE52E8F1AB84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5CD79A11-9A24-40E5-8730-8AB0A7C7120A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CD79A11-9A24-40E5-8730-8AB0A7C7120A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CD79A11-9A24-40E5-8730-8AB0A7C7120A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97EB5161-236D-4CE1-B350-BE52E8F1AB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97EB5161-236D-4CE1-B350-BE52E8F1AB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97EB5161-236D-4CE1-B350-BE52E8F1AB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97EB5161-236D-4CE1-B350-BE52E8F1AB84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
