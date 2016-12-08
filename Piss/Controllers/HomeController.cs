@@ -15,15 +15,21 @@ namespace Piss.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "The story behind PISS.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Get in touch.";
 
+            return View();
+        }
+
+        public ActionResult Documentation()
+        {
+            ViewBag.Message = "Become and Expert PISSer by reading the guidelines below. Pictures included!";
             return View();
         }
     }

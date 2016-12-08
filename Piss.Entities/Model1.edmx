@@ -88,16 +88,25 @@
           <Property Name="Name" Type="nvarchar" MaxLength="450" Nullable="false" />
           <Property Name="Value" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="Item">
+        <EntityType Name="ItemType">
           <Key>
-            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="ItemTypeId" />
           </Key>
-          <Property Name="ItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ItemType" Type="int" Nullable="false" />
+          <Property Name="ItemTypeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ImageID" Type="int" />
+          <Property Name="ImageId" Type="int" />
           <Property Name="IsBorrowed" Type="bit" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemTypeDetail">
+          <Key>
+            <PropertyRef Name="ItemDetailId" />
+          </Key>
+          <Property Name="ItemDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemTypeId" Type="bigint" Nullable="false" />
+          <Property Name="DataType" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -187,6 +196,18 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemTypeDetail_ItemType">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="ItemTypeDetail" Type="Self.ItemTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="ItemTypeDetail">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PISSModelStoreContainer">
           <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoleClaims" EntityType="Self.AspNetRoleClaims" Schema="dbo" store:Type="Tables" />
@@ -196,7 +217,8 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserTokens" EntityType="Self.AspNetUserTokens" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemTypeDetail" EntityType="Self.ItemTypeDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
             <DefiningQuery>SELECT 
     [database_firewall_rules].[id] AS [id], 
@@ -226,6 +248,10 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers_UserId" Association="Self.FK_AspNetUserRoles_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemTypeDetail_ItemType" Association="Self.FK_ItemTypeDetail_ItemType">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="ItemTypeDetail" EntitySet="ItemTypeDetail" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -257,7 +283,6 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <EntitySet Name="AspNetUserLogins" EntityType="PISSModel.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="PISSModel.AspNetUser" />
           <EntitySet Name="AspNetUserTokens" EntityType="PISSModel.AspNetUserToken" />
-          <EntitySet Name="Items" EntityType="PISSModel.Item" />
           <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="PISSModel.FK_AspNetRoleClaims_AspNetRoles_RoleId">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetRoleClaim" EntitySet="AspNetRoleClaims" />
@@ -273,6 +298,12 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <AssociationSet Name="AspNetUserRoles" Association="PISSModel.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="ItemTypes" EntityType="PISSModel.ItemType" />
+          <EntitySet Name="ItemTypeDetails" EntityType="PISSModel.ItemTypeDetail" />
+          <AssociationSet Name="FK_ItemTypeDetail_ItemType" Association="PISSModel.FK_ItemTypeDetail_ItemType">
+            <End Role="ItemType" EntitySet="ItemTypes" />
+            <End Role="ItemTypeDetail" EntitySet="ItemTypeDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__EFMigrationsHistory">
@@ -358,17 +389,6 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <Property Name="Name" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Item">
-          <Key>
-            <PropertyRef Name="ItemID" />
-          </Key>
-          <Property Name="ItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemType" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ImageID" Type="Int32" />
-          <Property Name="IsBorrowed" Type="Boolean" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
         <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
           <End Type="PISSModel.AspNetRole" Role="AspNetRole" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -414,6 +434,40 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
         <Association Name="AspNetUserRoles">
           <End Type="PISSModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="PISSModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="ItemTypeId" />
+          </Key>
+          <Property Name="ItemTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageId" Type="Int32" />
+          <Property Name="IsBorrowed" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ItemTypeDetails" Relationship="PISSModel.FK_ItemTypeDetail_ItemType" FromRole="ItemType" ToRole="ItemTypeDetail" />
+        </EntityType>
+        <EntityType Name="ItemTypeDetail">
+          <Key>
+            <PropertyRef Name="ItemDetailId" />
+          </Key>
+          <Property Name="ItemDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemTypeId" Type="Int64" Nullable="false" />
+          <Property Name="DataType" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ItemType" Relationship="PISSModel.FK_ItemTypeDetail_ItemType" FromRole="ItemTypeDetail" ToRole="ItemType" />
+        </EntityType>
+        <Association Name="FK_ItemTypeDetail_ItemType">
+          <End Type="PISSModel.ItemType" Role="ItemType" Multiplicity="1" />
+          <End Type="PISSModel.ItemTypeDetail" Role="ItemTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="ItemTypeDetail">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -512,18 +566,6 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="PISSModel.Item">
-              <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsBorrowed" ColumnName="IsBorrowed" />
-                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="PISSModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetUser">
               <ScalarProperty Name="Id" ColumnName="UserId" />
@@ -532,6 +574,28 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="ItemTypes">
+            <EntityTypeMapping TypeName="PISSModel.ItemType">
+              <MappingFragment StoreEntitySet="ItemType">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsBorrowed" ColumnName="IsBorrowed" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypeDetails">
+            <EntityTypeMapping TypeName="PISSModel.ItemTypeDetail">
+              <MappingFragment StoreEntitySet="ItemTypeDetail">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="ItemDetailId" ColumnName="ItemDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

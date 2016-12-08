@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Web.Http;
-using SimpleInjector;
+﻿using System.Web.Http;
+using Piss.Entities.Repositories;
+using Piss.Models.Repositories;
+
 
 namespace Piss
 {
@@ -11,9 +9,8 @@ namespace Piss
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            var container = new SimpleInjector.Container();
-            container.RegisterWebApiControllers(config);
+            // SimpleInjector registrations
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

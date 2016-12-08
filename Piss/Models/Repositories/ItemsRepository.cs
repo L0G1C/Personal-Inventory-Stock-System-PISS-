@@ -10,7 +10,7 @@ using Piss.Entities.Repositories;
 
 namespace Piss.Models.Repositories
 {
-    public class ItemsRepository : IItemsRepository
+    public class ItemsRepository : IItemTypeRepository
     {
         private readonly PISSEntities _db = new PISSEntities();
 
@@ -20,10 +20,10 @@ namespace Piss.Models.Repositories
         }
 
         // GET: api/Items/5
-        [ResponseType(typeof(Item))]
-        public Item GetItem(long id)
+        [ResponseType(typeof(Entities.ItemType))]
+        public Entities.ItemType GetItem(long id)
         {
-            Item item = _db.Items.Find(id);
+            var item = _db.ItemTypes.Find(id);
             if (item == null)
             {
                 throw new Exception("Item not found");

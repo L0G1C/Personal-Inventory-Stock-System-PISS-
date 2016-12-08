@@ -12,13 +12,13 @@ namespace Piss.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Item
+    public partial class ItemTypeDetail
     {
-        public long ItemID { get; set; }
-        public int ItemType { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> ImageID { get; set; }
-        public bool IsBorrowed { get; set; }
-        public bool IsActive { get; set; }
+        public int ItemDetailId { get; set; }
+        public long ItemTypeId { get; set; }
+        public string DataType { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ItemType ItemType { get; set; }
     }
 }

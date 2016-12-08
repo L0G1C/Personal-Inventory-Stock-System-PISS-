@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Piss.Entities.Repositories
 {
-    public interface IItemsRepository
+    public interface IItemTypeRepository
     {
-        Item GetItem(long id);
+        ItemType GetItem(long id);
     }
 }

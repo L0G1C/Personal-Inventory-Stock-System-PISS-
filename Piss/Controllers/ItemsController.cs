@@ -9,7 +9,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Piss.Entities;
+using AutoMapper;
+using Ninject;
+using Piss.Models;
 using Piss.Entities.Repositories;
 using Piss.Models.Repositories;
 
@@ -18,108 +20,24 @@ namespace Piss.Controllers
     public class ItemsController : ApiController
     {
 # region Props
-        private IItemsRepository _ItemsRepository { get; set; }
+        private IItemTypeRepository ItemsRepository { get; set; }
 # endregion
 
-
-        public ItemsController(IItemsRepository itemsRepo)
+       [Inject]
+        public ItemsController(IItemTypeRepository itemsRepo)
         {
-            _ItemsRepository = itemsRepo;
+            ItemsRepository = itemsRepo;
         }
-
-        // GET: api/Items
-        //public IQueryable<Item> GetItems()
-        //{
-        //    return db.Items;
-        //}
 
         // GET: api/Items/5
-        [ResponseType(typeof(Item))]
+        [ResponseType(typeof(ItemType))]
         public IHttpActionResult GetItem(long id)
         {
-            Item item = _ItemsRepository.GetItem(id);
+            var item = Mapper.Map<Entities.ItemType, ItemType>( ItemsRepository.GetItem(id));
 
-            return Ok();
+            return Ok(item);
         }
 
-        //// PUT: api/Items/5
-        //[ResponseType(typeof(void))]
-        //public async Task<IHttpActionResult> PutItem(long id, Item item)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
 
-        //    if (id != item.ItemID)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(item).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await db.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ItemExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
-
-        //// POST: api/Items
-        //[ResponseType(typeof(Item))]
-        //public async Task<IHttpActionResult> PostItem(Item item)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Items.Add(item);
-        //    await db.SaveChangesAsync();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = item.ItemID }, item);
-        //}
-
-        //// DELETE: api/Items/5
-        //[ResponseType(typeof(Item))]
-        //public async Task<IHttpActionResult> DeleteItem(long id)
-        //{
-        //    Item item = await db.Items.FindAsync(id);
-        //    if (item == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Items.Remove(item);
-        //    await db.SaveChangesAsync();
-
-        //    return Ok(item);
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-        //private bool ItemExists(long id)
-        //{
-        //    return db.Items.Count(e => e.ItemID == id) > 0;
-        //}
     }
 }

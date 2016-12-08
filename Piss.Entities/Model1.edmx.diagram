@@ -13,11 +13,13 @@
         <EntityTypeShape EntityType="PISSModel.AspNetUserLogin" Width="1.5" PointX="8.25" PointY="3.875" />
         <EntityTypeShape EntityType="PISSModel.AspNetUser" Width="1.5" PointX="6" PointY="4" />
         <EntityTypeShape EntityType="PISSModel.AspNetUserToken" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="PISSModel.Item" Width="1.5" PointX="2.75" PointY="7.75" />
         <AssociationConnector Association="PISSModel.FK_AspNetRoleClaims_AspNetRoles_RoleId" />
         <AssociationConnector Association="PISSModel.FK_AspNetUserClaims_AspNetUsers_UserId" />
         <AssociationConnector Association="PISSModel.FK_AspNetUserLogins_AspNetUsers_UserId" />
         <AssociationConnector Association="PISSModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="PISSModel.ItemType" Width="1.5" PointX="5.375" PointY="10" />
+        <EntityTypeShape EntityType="PISSModel.ItemTypeDetail" Width="1.5" PointX="7.625" PointY="10.125" />
+        <AssociationConnector Association="PISSModel.FK_ItemTypeDetail_ItemType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
