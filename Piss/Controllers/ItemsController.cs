@@ -35,7 +35,7 @@ namespace Piss.Controllers
         {
             var item = Mapper.Map<Entities.ItemType, ItemType>( ItemsRepository.GetItem(id));
 
-            return Ok(item);
+            return Json(item);
         }
 
 
