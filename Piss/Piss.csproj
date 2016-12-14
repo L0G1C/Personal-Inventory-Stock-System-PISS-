@@ -255,6 +255,7 @@
   <ItemGroup>
     <Content Include="app\app.component.css" />
     <Content Include="app\assets\images\logo.jpg" />
+    <Content Include="app\buckets\bucket-list.component.html" />
     <Content Include="app\home\welcome.component.html" />
     <Content Include="app\shared\star.component.css" />
     <Content Include="app\shared\star.component.html" />

@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'pm-app',
+    selector: 'piss-app',
     template: `
-        <h1>Angular2: Is Working</h1>
-    `
+        <div>
+            <h1>Angular App - {{ pageTitle }}</h1>
+        </div>
+        `
 })
-export class AppComponent { }
+export class AppComponent {
+    pageTitle: string = "PISS - Create a Bucket"
+}
