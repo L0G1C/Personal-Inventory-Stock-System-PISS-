@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
     template: `
         <div>
             <h1>Angular App - {{ pageTitle }}</h1>
+            <piss-buckets></piss-buckets>
         </div>
         `
 })

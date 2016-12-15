@@ -16,7 +16,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'piss-app',
-            template: "\n        <div>\n            <h1>Angular App - {{ pageTitle }}</h1>\n        </div>\n        "
+            template: "\n        <div>\n            <h1>Angular App - {{ pageTitle }}</h1>\n            <piss-buckets></piss-buckets>\n        </div>\n        "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

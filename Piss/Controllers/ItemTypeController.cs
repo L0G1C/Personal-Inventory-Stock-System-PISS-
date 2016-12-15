@@ -17,14 +17,14 @@ using Piss.Models.Repositories;
 
 namespace Piss.Controllers
 {
-    public class ItemsController : ApiController
+    public class ItemTypeController : ApiController
     {
 # region Props
         private IItemTypeRepository ItemsRepository { get; set; }
 # endregion
 
        [Inject]
-        public ItemsController(IItemTypeRepository itemsRepo)
+        public ItemTypeController(IItemTypeRepository itemsRepo)
         {
             ItemsRepository = itemsRepo;
         }
@@ -33,9 +33,9 @@ namespace Piss.Controllers
         [ResponseType(typeof(ItemType))]
         public IHttpActionResult GetItem(long id)
         {
-            var item = Mapper.Map<Entities.ItemType, ItemType>( ItemsRepository.GetItem(id));
+            var itemType = Mapper.Map<Entities.ItemType, ItemType>( ItemsRepository.GetItem(id));
 
-            return Json(item);
+            return Json(itemType);
         }
 
 

@@ -9,17 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var BucketList = (function () {
-    function BucketList() {
+var ItemTypeListComponent = (function () {
+    function ItemTypeListComponent() {
+        this.itemTypes = [
+            {
+                "ItemTypeId": 1
+            }
+        ];
     }
-    BucketList = __decorate([
+    ItemTypeListComponent = __decorate([
         core_1.Component({
-            selector: 'piss-bucketList',
-            templateUrl: 'app/buckets/bucketplist'
+            selector: 'piss-buckets',
+            templateUrl: 'app/items/itemtype-list.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], BucketList);
-    return BucketList;
+    ], ItemTypeListComponent);
+    return ItemTypeListComponent;
 }());
-exports.BucketList = BucketList;
-//# sourceMappingURL=bucket-list.component.js.map
+exports.ItemTypeListComponent = ItemTypeListComponent;
+//# sourceMappingURL=itemtype-list.component.js.map

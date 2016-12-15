@@ -239,7 +239,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\ItemTypeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -255,7 +255,7 @@
   <ItemGroup>
     <Content Include="app\app.component.css" />
     <Content Include="app\assets\images\logo.jpg" />
-    <Content Include="app\buckets\bucket-list.component.html" />
+    <Content Include="app\items\itemtype-list.component.html" />
     <Content Include="app\home\welcome.component.html" />
     <Content Include="app\shared\star.component.css" />
     <Content Include="app\shared\star.component.html" />
@@ -357,7 +357,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
-    <TypeScriptCompile Include="app\buckets\bucket-list.component.ts" />
+    <TypeScriptCompile Include="app\items\itemtype-list.component.ts" />
     <TypeScriptCompile Include="app\home\welcome.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
   </ItemGroup>
