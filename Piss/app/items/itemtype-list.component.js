@@ -13,7 +13,11 @@ var ItemTypeListComponent = (function () {
     function ItemTypeListComponent() {
         this.itemTypes = [
             {
-                "ItemTypeId": 1
+                "ItemTypeId": 1,
+                "Description": "Book",
+                "ImageId": 2,
+                "IsActive": 1,
+                "UserId": "leo"
             }
         ];
     }

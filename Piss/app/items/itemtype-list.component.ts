@@ -8,7 +8,12 @@ export class ItemTypeListComponent {
 
     itemTypes: any[] = [
         {
-            "ItemTypeId"    : 1
+            "ItemTypeId": 1,
+            "Description": "Book",
+            "ImageId": 2,
+            "IsActive": 1,
+            "UserId": "leo"
+
         }
     ];
 

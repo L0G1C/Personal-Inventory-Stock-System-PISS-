@@ -3,8 +3,13 @@
         Your Buckets!
     </div>
     
-    <ul class="panel0body container-fluid">
-        <li class="row">Bucket 1</li>        
+    <ul class="panel-body container-fluid" *ngIf="itemTypes && itemTypes.length">
+        <li class="row" *ngFor="let itemType of itemTypes">
+            <img src="../assets/images/logo.jpg"/>
+            <div>
+                <label class="label label-default">{{ itemType.Description }}</label>
+            </div>
+        </li>        
     </ul>
 
 </div>
