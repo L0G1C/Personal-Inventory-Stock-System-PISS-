@@ -281,11 +281,10 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="api\products\products.json" />
     <Content Include="package.json" />
-    <None Include="Properties\PublishProfiles\Piss20161129122028.pubxml" />
-    <None Include="Properties\PublishProfiles\PissApp - Web Deploy.pubxml" />
     <Content Include="index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\piss-app - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
