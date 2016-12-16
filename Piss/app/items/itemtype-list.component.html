@@ -3,18 +3,20 @@
         Your Buckets!
     </div>
     
-    <ul class="panel-body container-fluid" *ngIf="itemTypes && itemTypes.length">
-        <li class="row" *ngFor="let itemType of itemTypes">   
-                     
-            <div class="col-md-3 col-sm-4">
-                <a href="api/itemtype/{{ itemType.ItemTypeId }}">
-                    <label class="label label-default col-sm-12">{{ itemType.Description }}</label>
-                    <br />
-                    <img class="center-block" src="app/assets/images/bucket_empty.png" />
-                </a>
-            </div>
-            
+    <ul class="panel-body container-fluid" *ngIf="itemTypes && itemTypes.length">        
+        <li class="col-lg-3 col-sm-4" *ngFor="let itemType of itemTypes">                
+            <a href="api/itemtype/{{ itemType.ItemTypeId }}">
+                <label class="label label-default col-xs-12">{{ itemType.Description }}</label>
+                <br/>
+                <img class="center-block" src="app/assets/images/bucket_empty.png" />
+            </a>                
         </li>        
+        <li class="col-lg-3 col-sm-4">
+            <a href="#">
+                <label class="label label-default col-xs-12">Create New Bucket</label>
+                <br />
+                <p style="text-align: center; font-size: 100px;">... </p>
+            </a>
+        </li>
     </ul>
-
 </div>

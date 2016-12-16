@@ -14,7 +14,14 @@ var ItemTypeListComponent = (function () {
         this.itemTypes = [
             {
                 "ItemTypeId": 1,
-                "Description": "Book",
+                "Description": "Books",
+                "ImageId": 2,
+                "IsActive": 1,
+                "UserId": "leo"
+            },
+            {
+                "ItemTypeId": 2,
+                "Description": "Video Games",
                 "ImageId": 2,
                 "IsActive": 1,
                 "UserId": "leo"
