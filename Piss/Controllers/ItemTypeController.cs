@@ -29,13 +29,22 @@ namespace Piss.Controllers
             ItemsRepository = itemsRepo;
         }
 
-        // GET: api/Items/5
+        // GET: api/ItemType/5
         [ResponseType(typeof(ItemType))]
         public IHttpActionResult GetItem(long id)
         {
-            var itemType = Mapper.Map<Entities.ItemType, ItemType>( ItemsRepository.GetItem(id));
+            var itemType = Mapper.Map<Entities.ItemType, ItemType>( ItemsRepository.GetItemType(id));
 
             return Json(itemType);
+        }
+
+        // GET: api/ItemTypes
+        [ResponseType(typeof(List<ItemType>))]
+        public IHttpActionResult GetItemTypes()
+        {
+            var itemTypeList = Mapper.Map<IEnumerable<Entities.ItemType>, IEnumerable<ItemType>>(ItemsRepository.GetItemTypes());
+            
+            return Json(itemTypeList);
         }
 
 

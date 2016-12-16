@@ -8,6 +8,8 @@ namespace Piss.Entities.Repositories
 {
     public interface IItemTypeRepository
     {
-        ItemType GetItem(long id);
+        ItemType GetItemType(long id);
+        IEnumerable<ItemType> GetItemTypes();
+        ItemType AddItemType(ItemType itemType);
     }
 }

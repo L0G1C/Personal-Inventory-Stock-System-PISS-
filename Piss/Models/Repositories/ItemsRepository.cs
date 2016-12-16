@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Piss.Models.Repositories
 
         // GET: api/Items/5
         [ResponseType(typeof(Entities.ItemType))]
-        public Entities.ItemType GetItem(long id)
+        public Entities.ItemType GetItemType(long id)
         {
             var item = _db.ItemTypes.Find(id);
             if (item == null)
@@ -32,5 +33,16 @@ namespace Piss.Models.Repositories
             return item;
         }
 
+        [ResponseType(typeof(IEnumerable<Entities.ItemType>))]
+        public IEnumerable<Entities.ItemType> GetItemTypes()
+        {
+            return _db.ItemTypes.ToList();
+        }
+
+        [ResponseType(typeof(Entities.ItemType))]
+        public Entities.ItemType AddItemType(Entities.ItemType itemType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
