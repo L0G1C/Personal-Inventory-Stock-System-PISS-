@@ -242,5 +242,5 @@ ModelManifest.xml
 .fake/
 
 # Preventing Connection Strings on Github
-Web.Config
-App.Config
+Piss/Web.Config
+Piss.Entities/App.Config
