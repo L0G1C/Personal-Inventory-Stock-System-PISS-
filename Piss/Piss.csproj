@@ -254,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.component.css" />
+    <Content Include="app\assets\images\bucket_empty.png" />
+    <Content Include="app\assets\images\bucket_full.png" />
+    <Content Include="app\assets\images\bucket_overflow.png" />
     <Content Include="app\assets\images\logo.jpg" />
     <Content Include="app\items\itemtype-list.component.html" />
     <Content Include="app\home\welcome.component.html" />
@@ -338,6 +341,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
+    <Content Include="Views\Home\Credits.cshtml" />
     <None Include="Views\Home\Documentation.cshtml" />
   </ItemGroup>
   <ItemGroup>

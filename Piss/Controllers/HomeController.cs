@@ -32,6 +32,11 @@ namespace Piss.Controllers
             ViewBag.Message = "Become and Expert PISSer by reading the guidelines below. Pictures included!";
             return View();
         }
+
+        public ActionResult Credits()
+        {
+            return View();
+        }
         
     }
 }
