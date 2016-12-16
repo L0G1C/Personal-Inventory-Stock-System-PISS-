@@ -241,6 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
-# Preventing Connection Strings on Github
-Piss/Web.Config
-Piss.Entities/App.Config
+
