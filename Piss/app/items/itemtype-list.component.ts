@@ -1,5 +1,6 @@
 ﻿import { Component } from '@angular/core';
 
+//main item type component
 @Component({
     selector: 'piss-buckets',
     templateUrl: 'app/items/itemtype-list.component.html'
