@@ -258,6 +258,7 @@
     <Content Include="app\assets\images\bucket_full.png" />
     <Content Include="app\assets\images\bucket_overflow.png" />
     <Content Include="app\assets\images\logo.jpg" />
+    <Content Include="app\items\itemtype-list.component.css" />
     <Content Include="app\items\itemtype-list.component.html" />
     <Content Include="app\home\welcome.component.html" />
     <Content Include="app\shared\star.component.css" />
@@ -360,6 +361,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\items\itemtype-filter.ts" />
+    <TypeScriptCompile Include="app\items\itemtype.ts" />
     <TypeScriptCompile Include="app\items\itemtype-list.component.ts" />
     <TypeScriptCompile Include="app\home\welcome.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />

@@ -14,25 +14,27 @@ var ItemTypeListComponent = (function () {
     function ItemTypeListComponent() {
         this.itemTypes = [
             {
-                "ItemTypeId": 1,
-                "Description": "Books",
-                "ImageId": 2,
-                "IsActive": 1,
-                "UserId": "leo"
+                "itemTypeId": 1,
+                "description": "Books",
+                "imageId": 2,
+                "isActive": 1,
+                "userId": "leo"
             },
             {
-                "ItemTypeId": 2,
-                "Description": "Video Games",
-                "ImageId": 2,
-                "IsActive": 1,
-                "UserId": "leo"
+                "itemTypeId": 2,
+                "description": "Video Games",
+                "imageId": 2,
+                "isActive": 1,
+                "userId": "leo"
             }
         ];
     }
     ItemTypeListComponent = __decorate([
         core_1.Component({
             selector: 'piss-buckets',
-            templateUrl: 'app/items/itemtype-list.component.html'
+            moduleId: module.id,
+            templateUrl: 'itemtype-list.component.html',
+            styleUrls: ['itemtype-list.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], ItemTypeListComponent);

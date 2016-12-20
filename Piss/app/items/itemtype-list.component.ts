@@ -1,26 +1,30 @@
 ﻿import { Component } from '@angular/core';
+import { IItemType } from './itemtype';
 
 //main item type component
 @Component({
     selector: 'piss-buckets',
-    templateUrl: 'app/items/itemtype-list.component.html'
+    moduleId: module.id,
+    templateUrl: 'itemtype-list.component.html',
+    styleUrls: ['itemtype-list.component.css']
 })
 export class ItemTypeListComponent {
-
-    itemTypes: any[] = [
+    listFilter: string;
+    itemTypes: IItemType[] = [
         {
-            "ItemTypeId": 1,
-            "Description": "Books",
-            "ImageId": 2,
-            "IsActive": 1,
-            "UserId": "leo"
+            "itemTypeId": 1,
+            "description": "Books",
+            "imageId": 2,
+            "isActive": 1,
+            "userId": "leo"
+            
         },
         {
-            "ItemTypeId": 2,
-            "Description": "Video Games",
-            "ImageId": 2,
-            "IsActive": 1,
-            "UserId": "leo"
+            "itemTypeId": 2,
+            "description": "Video Games",
+            "imageId": 2,
+            "isActive": 1,
+            "userId": "leo"
         }
     ];
 

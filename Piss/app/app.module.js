@@ -10,16 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var itemtype_list_component_1 = require('./items/itemtype-list.component');
+var itemtype_filter_1 = require('./items/itemtype-filter');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent,
-                itemtype_list_component_1.ItemTypeListComponent],
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule],
+            declarations: [
+                app_component_1.AppComponent,
+                itemtype_list_component_1.ItemTypeListComponent,
+                itemtype_filter_1.ItemTypeFilterPipe],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -3,20 +3,31 @@
         Your Buckets!
     </div>
     
-    <ul class="panel-body container-fluid" *ngIf="itemTypes && itemTypes.length">        
-        <li class="col-lg-3 col-sm-4" *ngFor="let itemType of itemTypes">                
-            <a href="api/itemtype/{{ itemType.ItemTypeId }}">
-                <label class="label label-default col-xs-12">{{ itemType.Description }}</label>
-                <br/>
-                <img class="center-block" src="app/assets/images/bucket_empty.png" />
-            </a>                
-        </li>        
-        <li class="col-lg-3 col-sm-4">
-            <a href="#">
-                <label class="label label-default col-xs-12">Create New Bucket</label>
-                <br />
-                <p style="text-align: center; font-size: 100px;">... </p>
-            </a>
-        </li>
-    </ul>
+    <div class="panel-body">
+
+        <div class="row">
+            <label for="txtBucketSearch" class="col-md-1">Search: </label>
+            <input id ="txtBucketSearch" class="col-md-2" type="text" Width="150" [(ngModel)]="listFilter" />
+        </div>
+
+        <div class="row">
+            <ul class="panel-body container-fluid" *ngIf="itemTypes && itemTypes.length">
+                <li class="col-lg-3 col-sm-4" *ngFor="let itemType of itemTypes | itemTypeFilter:listFilter">
+                    <a href="api/itemtype/{{ itemType.itemTypeId }}">
+                        <label class="label label-default col-xs-12">{{ itemType.description }}</label>
+                        <br />
+                        <img class="center-block" src="app/assets/images/bucket_empty.png" title="New Bucket" />
+                    </a>
+                </li>
+                <li class="col-lg-3 col-sm-4">
+                    <a href="#">
+                        <label class="label label-default col-xs-12">Create New Bucket</label>
+                        <br />
+                        <p id="newBucketIcon">...</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 </div>
