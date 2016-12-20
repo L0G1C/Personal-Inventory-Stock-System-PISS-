@@ -1,5 +1,7 @@
-# PISS
-Personal Inventory &amp; Stock System
+# PISS - Personal Inventory &amp; Stock System
+###An Open-source project built on ASP.NET Core and AngularJs 2###
+
+
 
 Users keep track of items in their home by creating their own PISS Bucket and defining the item types that will go in.
 
