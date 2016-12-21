@@ -261,8 +261,8 @@
     <Content Include="app\items\itemtype-list.component.css" />
     <Content Include="app\items\itemtype-list.component.html" />
     <Content Include="app\home\welcome.component.html" />
-    <Content Include="app\shared\star.component.css" />
-    <Content Include="app\shared\star.component.html" />
+    <Content Include="app\shared\star-rating\star.component.css" />
+    <Content Include="app\shared\star-rating\star.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -366,6 +366,7 @@
     <TypeScriptCompile Include="app\items\itemtype-list.component.ts" />
     <TypeScriptCompile Include="app\home\welcome.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\items\bucket-switcher.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
