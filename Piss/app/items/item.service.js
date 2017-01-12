@@ -9,20 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var item_service_1 = require('./items/item.service');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.pageTitle = "PISS - Your buckets";
+var ItemService = (function () {
+    function ItemService() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'piss-app',
-            template: "\n        <div>\n            <h1>Angular App - {{ pageTitle }}</h1>\n            <piss-buckets></piss-buckets>\n        </div>\n        ",
-            providers: [item_service_1.ItemService]
-        }), 
+    ItemService.prototype.getItemTypes = function () {
+        return [
+            {
+                "itemTypeId": 1,
+                "description": "Books",
+                "imageId": 2,
+                "isActive": 1,
+                "userId": "leo"
+            },
+            {
+                "itemTypeId": 2,
+                "description": "Video Games",
+                "imageId": 2,
+                "isActive": 1,
+                "userId": "leo"
+            }
+        ];
+    };
+    ItemService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], ItemService);
+    return ItemService;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.ItemService = ItemService;
+//# sourceMappingURL=item.service.js.map
