@@ -1,5 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { IItemType } from './itemtype';
+import { ItemService } from './item.service';
 
 //main item type component
 @Component({
@@ -9,23 +10,15 @@ import { IItemType } from './itemtype';
     styleUrls: ['itemtype-list.component.css']
 })
 export class ItemTypeListComponent {
-    listFilter: string;
-    itemTypes: IItemType[] = [
-        {
-            "itemTypeId": 1,
-            "description": "Books",
-            "imageId": 2,
-            "isActive": 1,
-            "userId": "leo"
-            
-        },
-        {
-            "itemTypeId": 2,
-            "description": "Video Games",
-            "imageId": 2,
-            "isActive": 1,
-            "userId": "leo"
-        }
-    ];
+    listFilter: string;    
+    itemTypes: IItemType[];
+
+    constructor(private _itemService: ItemService) {
+        
+    }
+
+    ngOnInit(): void {
+        this.itemTypes = this._itemService.getItemTypes();
+    }
 
 }

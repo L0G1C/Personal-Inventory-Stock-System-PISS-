@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ItemService } from './items/item.service';
 
 @Component({
     selector: 'piss-app',
@@ -7,8 +8,9 @@ import { Component } from '@angular/core';
             <h1>Angular App - {{ pageTitle }}</h1>
             <piss-buckets></piss-buckets>
         </div>
-        `
+        `,
+    providers: [ItemService]
 })
 export class AppComponent {
-    pageTitle: string = "PISS - Create a Bucket"
+    pageTitle: string = "PISS - Your buckets"
 }

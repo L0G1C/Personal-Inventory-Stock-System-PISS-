@@ -361,6 +361,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\items\item.service.ts" />
     <TypeScriptCompile Include="app\items\itemtype-filter.ts" />
     <TypeScriptCompile Include="app\items\itemtype.ts" />
     <TypeScriptCompile Include="app\items\itemtype-list.component.ts" />

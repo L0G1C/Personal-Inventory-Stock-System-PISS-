@@ -9,26 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var item_service_1 = require('./item.service');
 //main item type component
 var ItemTypeListComponent = (function () {
-    function ItemTypeListComponent() {
-        this.itemTypes = [
-            {
-                "itemTypeId": 1,
-                "description": "Books",
-                "imageId": 2,
-                "isActive": 1,
-                "userId": "leo"
-            },
-            {
-                "itemTypeId": 2,
-                "description": "Video Games",
-                "imageId": 2,
-                "isActive": 1,
-                "userId": "leo"
-            }
-        ];
+    function ItemTypeListComponent(_itemService) {
+        this._itemService = _itemService;
     }
+    ItemTypeListComponent.prototype.ngOnInit = function () {
+        this.itemTypes = this._itemService.getItemTypes();
+    };
     ItemTypeListComponent = __decorate([
         core_1.Component({
             selector: 'piss-buckets',
@@ -36,7 +25,7 @@ var ItemTypeListComponent = (function () {
             templateUrl: 'itemtype-list.component.html',
             styleUrls: ['itemtype-list.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [item_service_1.ItemService])
     ], ItemTypeListComponent);
     return ItemTypeListComponent;
 }());
