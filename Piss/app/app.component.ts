@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { ItemService } from './items/item.service';
+import { Component } from "@angular/core";
+import { ItemService } from "./items/item.service";
 
 @Component({
-    selector: 'piss-app',
+    selector: "piss-app",
     template: `
         <div>
             <h1>Angular App - {{ pageTitle }}</h1>

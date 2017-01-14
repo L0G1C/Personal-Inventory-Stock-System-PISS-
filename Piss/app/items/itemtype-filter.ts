@@ -1,8 +1,8 @@
-﻿import {PipeTransform, Pipe} from '@angular/core';
-import { IItemType } from './itemtype';
+﻿import {PipeTransform, Pipe} from "@angular/core";
+import { IItemType } from "./itemtype";
 
 @Pipe({
-    name: 'itemTypeFilter'
+    name: "itemTypeFilter"
 })
 export class ItemTypeFilterPipe implements PipeTransform {
     transform(value: IItemType[], filterBy: string): IItemType[] {

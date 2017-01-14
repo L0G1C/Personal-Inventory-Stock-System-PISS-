@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var item_service_1 = require('./item.service');
+var core_1 = require("@angular/core");
+var item_service_1 = require("./item.service");
 //main item type component
 var ItemTypeListComponent = (function () {
     function ItemTypeListComponent(_itemService) {
@@ -20,10 +20,10 @@ var ItemTypeListComponent = (function () {
     };
     ItemTypeListComponent = __decorate([
         core_1.Component({
-            selector: 'piss-buckets',
+            selector: "piss-buckets",
             moduleId: module.id,
-            templateUrl: 'itemtype-list.component.html',
-            styleUrls: ['itemtype-list.component.css']
+            templateUrl: "itemtype-list.component.html",
+            styleUrls: ["itemtype-list.component.css"]
         }), 
         __metadata('design:paramtypes', [item_service_1.ItemService])
     ], ItemTypeListComponent);

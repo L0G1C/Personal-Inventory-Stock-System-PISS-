@@ -1,5 +1,5 @@
-﻿import { Injectable } from '@angular/core';
-import { IItemType } from './itemtype';
+﻿import { Injectable } from "@angular/core";
+import { IItemType } from "./itemtype";
 
 @Injectable()
 export class ItemService {
