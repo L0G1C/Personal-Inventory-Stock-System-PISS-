@@ -35,5 +35,7 @@ namespace Piss.Entities
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual DbSet<ItemType> ItemTypes { get; set; }
         public virtual DbSet<ItemTypeDetail> ItemTypeDetails { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Item_ItemType_ItemTypeDetail_Assoc> Item_ItemType_ItemTypeDetail_Assoc { get; set; }
     }
 }

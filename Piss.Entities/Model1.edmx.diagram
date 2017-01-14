@@ -20,6 +20,9 @@
         <EntityTypeShape EntityType="PISSModel.ItemType" Width="1.5" PointX="5.375" PointY="10" />
         <EntityTypeShape EntityType="PISSModel.ItemTypeDetail" Width="1.5" PointX="7.625" PointY="10.125" />
         <AssociationConnector Association="PISSModel.FK_ItemTypeDetail_ItemType" />
+        <EntityTypeShape EntityType="PISSModel.Item" Width="1.5" PointX="7.625" PointY="12.875" />
+        <EntityTypeShape EntityType="PISSModel.Item_ItemType_ItemTypeDetail_Assoc" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="PISSModel.FK_Item_ItemType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

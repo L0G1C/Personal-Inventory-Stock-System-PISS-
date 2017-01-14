@@ -18,6 +18,7 @@ namespace Piss.Entities
         public ItemType()
         {
             this.ItemTypeDetails = new HashSet<ItemTypeDetail>();
+            this.Items = new HashSet<Item>();
         }
     
         public long ItemTypeId { get; set; }
@@ -29,5 +30,7 @@ namespace Piss.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemTypeDetail> ItemTypeDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

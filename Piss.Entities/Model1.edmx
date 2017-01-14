@@ -88,6 +88,30 @@
           <Property Name="Name" Type="nvarchar" MaxLength="450" Nullable="false" />
           <Property Name="Value" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemTypeId" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsBorrowed" Type="bit" Nullable="false" />
+          <Property Name="ImageId" Type="int" />
+        </EntityType>
+        <EntityType Name="Item_ItemType_ItemTypeDetail_Assoc">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="ItemTypeId" />
+            <PropertyRef Name="ItemTypeDetailId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ItemTypeId" Type="int" Nullable="false" />
+          <Property Name="ItemTypeDetailId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="ItemType">
           <Key>
             <PropertyRef Name="ItemTypeId" />
@@ -196,6 +220,18 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Item_ItemType">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemTypeDetail_ItemType">
           <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
           <End Role="ItemTypeDetail" Type="Self.ItemTypeDetail" Multiplicity="*" />
@@ -217,6 +253,8 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserTokens" EntityType="Self.AspNetUserTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_ItemType_ItemTypeDetail_Assoc" EntityType="Self.Item_ItemType_ItemTypeDetail_Assoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemTypeDetail" EntityType="Self.ItemTypeDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
@@ -248,6 +286,10 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers_UserId" Association="Self.FK_AspNetUserRoles_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemType" Association="Self.FK_Item_ItemType">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="Item" EntitySet="Item" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemTypeDetail_ItemType" Association="Self.FK_ItemTypeDetail_ItemType">
             <End Role="ItemType" EntitySet="ItemType" />
@@ -304,6 +346,12 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <AssociationSet Name="FK_ItemTypeDetail_ItemType" Association="PISSModel.FK_ItemTypeDetail_ItemType">
             <End Role="ItemType" EntitySet="ItemTypes" />
             <End Role="ItemTypeDetail" EntitySet="ItemTypeDetails" />
+          </AssociationSet>
+          <EntitySet Name="Items" EntityType="PISSModel.Item" />
+          <EntitySet Name="Item_ItemType_ItemTypeDetail_Assoc" EntityType="PISSModel.Item_ItemType_ItemTypeDetail_Assoc" />
+          <AssociationSet Name="FK_Item_ItemType" Association="PISSModel.FK_Item_ItemType">
+            <End Role="ItemType" EntitySet="ItemTypes" />
+            <End Role="Item" EntitySet="Items" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__EFMigrationsHistory">
@@ -446,6 +494,7 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ItemTypeDetails" Relationship="PISSModel.FK_ItemTypeDetail_ItemType" FromRole="ItemType" ToRole="ItemTypeDetail" />
+          <NavigationProperty Name="Items" Relationship="PISSModel.FK_Item_ItemType" FromRole="ItemType" ToRole="Item" />
         </EntityType>
         <EntityType Name="ItemTypeDetail">
           <Key>
@@ -465,6 +514,43 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
               <PropertyRef Name="ItemTypeId" />
             </Principal>
             <Dependent Role="ItemTypeDetail">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemTypeId" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsBorrowed" Type="Boolean" Nullable="false" />
+          <Property Name="ImageId" Type="Int32" />
+          <NavigationProperty Name="ItemType" Relationship="PISSModel.FK_Item_ItemType" FromRole="Item" ToRole="ItemType" />
+        </EntityType>
+        <EntityType Name="Item_ItemType_ItemTypeDetail_Assoc">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="ItemTypeId" />
+            <PropertyRef Name="ItemTypeDetailId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemTypeDetailId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Item_ItemType">
+          <End Type="PISSModel.ItemType" Role="ItemType" Multiplicity="1" />
+          <End Type="PISSModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="Item">
               <PropertyRef Name="ItemTypeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -593,6 +679,30 @@ warning 6002: The table/view 'PISS.sys.database_firewall_rules' does not have a 
                 <ScalarProperty Name="DataType" ColumnName="DataType" />
                 <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
                 <ScalarProperty Name="ItemDetailId" ColumnName="ItemDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="PISSModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="IsBorrowed" ColumnName="IsBorrowed" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_ItemType_ItemTypeDetail_Assoc">
+            <EntityTypeMapping TypeName="PISSModel.Item_ItemType_ItemTypeDetail_Assoc">
+              <MappingFragment StoreEntitySet="Item_ItemType_ItemTypeDetail_Assoc">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ItemTypeDetailId" ColumnName="ItemTypeDetailId" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
