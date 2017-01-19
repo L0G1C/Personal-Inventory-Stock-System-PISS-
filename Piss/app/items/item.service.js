@@ -9,30 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/do");
+require("rxjs/add/operator/catch");
 var ItemService = (function () {
-    function ItemService() {
+    function ItemService(_http) {
+        this._http = _http;
+        this._url = "/api/ItemType";
     }
     ItemService.prototype.getItemTypes = function () {
-        return [
-            {
-                "itemTypeId": 1,
-                "description": "Books",
-                "imageId": 2,
-                "isActive": 1,
-                "userId": "leo"
-            },
-            {
-                "itemTypeId": 2,
-                "description": "Video Games",
-                "imageId": 2,
-                "isActive": 1,
-                "userId": "leo"
-            }
-        ];
+        return (this._http.get(this._url)
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log("all: " + JSON.stringify(data)); })
+            .catch(this.handleError));
+    };
+    ItemService.prototype.handleError = function (error) {
+        console.error(error);
+        return Observable_1.Observable.throw(error.json().error || "Error on API call");
     };
     ItemService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], ItemService);
     return ItemService;
 }());

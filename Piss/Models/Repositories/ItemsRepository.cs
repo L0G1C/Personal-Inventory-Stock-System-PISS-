@@ -11,7 +11,7 @@ using Piss.Entities.Repositories;
 
 namespace Piss.Models.Repositories
 {
-    public class ItemsRepository : IItemTypeRepository
+    public class ItemsRepository : IItemRepository
     {
         private readonly PISSEntities _db = new PISSEntities();
 
@@ -27,16 +27,38 @@ namespace Piss.Models.Repositories
             var item = _db.ItemTypes.Find(id);
             if (item == null)
             {
+                throw new Exception("Bucket ItemType not found");
+            }
+
+            return item;
+        }     
+        
+        // GET: api/ItemType
+        [ResponseType(typeof(IEnumerable<Entities.ItemType>))]
+        public IEnumerable<Entities.ItemType> GetItemTypes()
+        {
+            return _db.ItemTypes.ToList();
+        }
+
+
+        // GET: api/Item/5
+        [ResponseType(typeof(Entities.Item))]
+        public Entities.Item GetItem(long id)
+        {
+            var item = _db.Items.Find(id);
+            if (item == null)
+            {
                 throw new Exception("Item not found");
             }
 
             return item;
         }
 
-        [ResponseType(typeof(IEnumerable<Entities.ItemType>))]
-        public IEnumerable<Entities.ItemType> GetItemTypes()
+        // GET: api/Items
+        [ResponseType(typeof(IEnumerable<Entities.Item>))]
+        public IEnumerable<Entities.Item> GetItems(long itemTypeId)
         {
-            return _db.ItemTypes.ToList();
+            return _db.Items.ToList();
         }
 
         [ResponseType(typeof(Entities.ItemType))]

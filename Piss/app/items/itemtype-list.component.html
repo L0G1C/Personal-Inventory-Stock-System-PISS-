@@ -14,8 +14,8 @@
         <div class="row">
             <ul class="panel-body container-fluid" *ngIf="itemTypes && itemTypes.length">
                 <li class="col-lg-3 col-sm-4" *ngFor="let itemType of itemTypes | itemTypeFilter:listFilter">
-                    <a href="api/itemtype/{{ itemType.itemTypeId }}">
-                        <label class="label label-default col-xs-12">{{ itemType.description }}</label>
+                    <a href="api/itemType/{{ itemType.ItemTypeId }}/items">
+                        <label class="label label-default col-xs-12">{{ itemType.Description }}</label>
                         <br />
                         <img class="center-block" src="app/assets/images/bucket_empty.png" title="New Bucket" />
                     </a>

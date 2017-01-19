@@ -14,6 +14,7 @@ var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var itemtype_list_component_1 = require("./items/itemtype-list.component");
 var itemtype_filter_1 = require("./items/itemtype-filter");
+var http_1 = require("@angular/http");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -21,7 +22,8 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule],
+                forms_1.FormsModule,
+                http_1.HttpModule],
             declarations: [
                 app_component_1.AppComponent,
                 itemtype_list_component_1.ItemTypeListComponent,

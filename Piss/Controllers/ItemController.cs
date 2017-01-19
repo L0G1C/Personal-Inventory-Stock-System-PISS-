@@ -39,12 +39,12 @@ namespace Piss.Controllers
         }
 
         // GET: api/Items
-        [ResponseType(typeof(List<Item>))]
-        public IHttpActionResult GetItems()
+        [ResponseType(typeof(List<Item>)), Route("items/{itemTypeId}")]
+        public IHttpActionResult GetItems(long itemTypeId)
         {
-            var ItemList = Mapper.Map<IEnumerable<Entities.Item>, IEnumerable<Item>>(ItemsRepository.GetItems());
+            var itemList = Mapper.Map<IEnumerable<Entities.Item>, IEnumerable<Item>>(ItemsRepository.GetItems(itemTypeId));
             
-            return Json(ItemList);
+            return Json(itemList);
         }
 
 

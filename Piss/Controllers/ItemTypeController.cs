@@ -20,11 +20,11 @@ namespace Piss.Controllers
     public class ItemTypeController : ApiController
     {
 # region Props
-        private IItemTypeRepository ItemsRepository { get; set; }
+        private IItemRepository ItemsRepository { get; set; }
 # endregion
 
        [Inject]
-        public ItemTypeController(IItemTypeRepository itemsRepo)
+        public ItemTypeController(IItemRepository itemsRepo)
         {
             ItemsRepository = itemsRepo;
         }
@@ -47,6 +47,14 @@ namespace Piss.Controllers
             return Json(itemTypeList);
         }
 
+        // GET: api/Items
+        [ResponseType(typeof(List<Item>)), Route("api/itemType/{itemTypeId}/items")]
+        public IHttpActionResult GetItems(long itemTypeId)
+        {
+            var itemList = Mapper.Map<IEnumerable<Entities.Item>, IEnumerable<Item>>(ItemsRepository.GetItems(itemTypeId));
+
+            return Json(itemList);
+        }
 
     }
 }

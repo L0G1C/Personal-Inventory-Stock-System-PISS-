@@ -16,7 +16,9 @@ var ItemTypeListComponent = (function () {
         this._itemService = _itemService;
     }
     ItemTypeListComponent.prototype.ngOnInit = function () {
-        this.itemTypes = this._itemService.getItemTypes();
+        var _this = this;
+        this._itemService.getItemTypes()
+            .subscribe(function (itemtypesfromapi) { return _this.itemTypes = itemtypesfromapi; }, function (error) { return _this.errorMessage = error; });
     };
     ItemTypeListComponent = __decorate([
         core_1.Component({

@@ -12,13 +12,18 @@ import { ItemService } from "./item.service";
 export class ItemTypeListComponent {
     listFilter: string;    
     itemTypes: IItemType[];
+    errorMessage: string;
 
     constructor(private _itemService: ItemService) {
         
     }
 
     ngOnInit(): void {
-        this.itemTypes = this._itemService.getItemTypes();
+        this._itemService.getItemTypes()
+            .subscribe(
+                itemtypesfromapi => this.itemTypes = itemtypesfromapi,
+                error => this.errorMessage = <any>error);
+        
     }
 
 }

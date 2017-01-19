@@ -13,6 +13,7 @@ namespace Piss.App_Start
             AutoMapper.Mapper.Initialize(config =>
             {
                 config.CreateMap<ItemType, Models.ItemType>();
+                config.CreateMap<Item, Models.Item>();
             });
         }
     }

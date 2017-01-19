@@ -1,26 +1,29 @@
 ﻿import { Injectable } from "@angular/core";
 import { IItemType } from "./itemtype";
+import { Http, Response } from "@angular/http";
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/do";
+import "rxjs/add/operator/catch";
 
 @Injectable()
 export class ItemService {
 
-    getItemTypes(): IItemType[] {
-        return [
-            {
-                "itemTypeId": 1,
-                "description": "Books",
-                "imageId": 2,
-                "isActive": 1,
-                "userId": "leo"
+    private _url = "/api/ItemType";
 
-            },
-            {
-                "itemTypeId": 2,
-                "description": "Video Games",
-                "imageId": 2,
-                "isActive": 1,
-                "userId": "leo"
-            }
-        ];
+    constructor(private _http: Http){}
+
+    getItemTypes(): Observable<IItemType[]> {
+        return (this._http.get(this._url)
+            .map((response: Response) => <IItemType[]> response.json())
+            .do(data => console.log("all: " + JSON.stringify(data)))
+            .catch(this.handleError)) as any;
+
+    }
+
+
+    private handleError(error: Response) {
+        console.error(error);
+        return Observable.throw(error.json().error || "Error on API call");
     }
 }
